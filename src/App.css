@@ -4,15 +4,17 @@
   @apply grid grid-cols-1 grid-rows-1;
 }
 
-/* Navbar */
+/* Header */
 
-.nav {
+.header {
   @apply max-w-screen-xl bg-ash-50 relative flex flex-wrap items-center justify-between mx-auto py-4 px-6;
 }
 
-.nav__logo {
+.header__logo {
   @apply flex items-center w-28 space-x-3 rtl:space-x-reverse;
 }
+
+/* Navbar */
 
 .nav__actions {
   @apply flex text-brown-50;
@@ -34,11 +36,11 @@
   @apply hidden;
 }
 
-.nav__list {
+.menu {
   @apply font-medium text-sm flex flex-col md:p-0 md:mt-0 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0;
 }
 
-.nav__item {
+.menu__item {
   @apply border-b border-ash-100;
 }
 
@@ -47,5 +49,5 @@
 }
 
 .item__svg {
-  @apply w-5 h-5 text-brown-50;
+  @apply w-5 h-5 text-sunset-50 fill-sunset-50;
 }

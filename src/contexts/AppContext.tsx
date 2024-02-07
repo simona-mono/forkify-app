@@ -3,13 +3,14 @@ import React, { createContext, useState } from 'react';
 // Define the type for context
 type ContextType = {
   isMobileMenuOpen: boolean;
- // setIsMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   toggleMobileMenu: () => void;
 };
 
 // Create context with a default value
 export const AppContext = createContext<ContextType>({
   isMobileMenuOpen: false,
+  setIsMobileMenuOpen: () => {},
   toggleMobileMenu: () => {},
 });
 
@@ -27,6 +28,7 @@ export const ContextProvider = ({ children }: Props) => {
   // Provide context value to children components
   const contextValue: ContextType = {
     isMobileMenuOpen,
+    setIsMobileMenuOpen,
     toggleMobileMenu,
   };
 
