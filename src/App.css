@@ -14,18 +14,44 @@
   @apply flex items-center w-28 space-x-3 rtl:space-x-reverse;
 }
 
+/* SearchBar */
+
+.search {
+  @apply w-full fixed bottom-0 left-0 px-6 pb-16 pt-2 bg-ash-50 text-brown-50 md:static md:block md:w-auto;
+}
+
+.search--hidden {
+  @apply hidden md:block;
+}
+
+.search__input {
+  @apply relative;
+}
+
+.search__btn {
+  @apply absolute top-11 w-full;
+}
+
 /* Navbar */
 
 .nav__actions {
   @apply flex text-brown-50;
 }
 
-.nav__btn {
- @apply inline-flex items-center p-2 w-9 h-9 justify-center text-sm rounded-lg md:hidden;
+.btn {
+ @apply inline-flex items-center p-2 w-9 h-9 justify-center text-sm rounded-lg;
 }
 
-.nav__btn--gradient {
-  @apply text-white rounded-full sm:mr-1 bg-gradient-to-r from-birdy-50 to-sunset-50;
+.btn--burger, .btn--search {
+  @apply md:hidden;
+ }
+
+ .btn--search {
+  @apply flex items-center h-full;
+ }
+
+.container--gradient {
+  @apply flex justify-center text-white rounded-full py-1 sm:mr-1 bg-gradient-to-r from-birdy-50 to-sunset-50;
 }
 
 .nav__menu {
@@ -33,7 +59,7 @@
 }
 
 .nav__menu--hidden {
-  @apply hidden;
+  @apply hidden md:block;
 }
 
 .menu {
@@ -48,6 +74,18 @@
  @apply flex items-center justify-between block px-6 py-4 rounded md:p-0 focus:bg-ash-100;
 }
 
-.item__svg {
-  @apply w-5 h-5 text-sunset-50 fill-sunset-50;
+.svg--sunset {
+  @apply w-5 h-5 text-sunset-50;
+}
+
+.svg--white {
+  @apply w-5 h-5 text-slate-100;
+}
+
+.svg--brown {
+  @apply w-5 h-5 text-brown-50;
+}
+
+.svg--shrink {
+  @apply shrink-0 mr-2;
 }

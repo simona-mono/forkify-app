@@ -2,7 +2,7 @@ import MenuItem from "../atoms/MenuItem";
 import { useAppContext } from "../../contexts/AppContext";
 
 export default function MenuList() {
-    const { isMobileMenuOpen} = useAppContext(); 
+    const { isMobileMenuOpen } = useAppContext(); 
   
     return (
     <div className={`${isMobileMenuOpen ? '' : 'nav__menu--hidden'} nav__menu`}>

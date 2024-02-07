@@ -5,6 +5,9 @@ type ContextType = {
   isMobileMenuOpen: boolean;
   setIsMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   toggleMobileMenu: () => void;
+  isSearchOpen: boolean,
+  setIsSearchOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  toggleMobileSearch: () => void;
 };
 
 // Create context with a default value
@@ -12,6 +15,9 @@ export const AppContext = createContext<ContextType>({
   isMobileMenuOpen: false,
   setIsMobileMenuOpen: () => {},
   toggleMobileMenu: () => {},
+  isSearchOpen: false,
+  setIsSearchOpen: () => {},
+  toggleMobileSearch: () => {},
 });
 
 type Props = {
@@ -20,9 +26,16 @@ type Props = {
 
 export const ContextProvider = ({ children }: Props) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const toggleMobileMenu = () => {
+    setIsSearchOpen(false);
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const toggleMobileSearch = () => {
+    setIsMobileMenuOpen(false);
+    setIsSearchOpen(!isSearchOpen);
   };
 
   // Provide context value to children components
@@ -30,6 +43,9 @@ export const ContextProvider = ({ children }: Props) => {
     isMobileMenuOpen,
     setIsMobileMenuOpen,
     toggleMobileMenu,
+    isSearchOpen,
+    setIsSearchOpen,
+    toggleMobileSearch
   };
 
   return (

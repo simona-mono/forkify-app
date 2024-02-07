@@ -6,7 +6,7 @@ export default function BurgerBtn() {
     return (
      <button
       type="button"
-      className=" nav__btn nav__btn--burger"      
+      className="btn btn--burger"      
       onClick={toggleMobileMenu}
       >
       <span className="sr-only">Open menu</span>

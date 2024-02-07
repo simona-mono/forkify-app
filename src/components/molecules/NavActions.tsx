@@ -6,7 +6,7 @@ export default function NavActions() {
     return (
         <>
         <div className="nav__actions">
-            <SearchBtn />
+            <SearchBtn gradient={false} />
             <BurgerBtn />
         </div>     
         </>

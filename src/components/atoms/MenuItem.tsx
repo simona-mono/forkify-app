@@ -9,7 +9,7 @@ export default function MenuItem({ text, imgPath }: MenuItemProps) {
         <li className="menu__item">
             <a href="#" className="item">
                 {text}
-                <img className="item__svg" src={imgPath} alt={text} />
+                <img className="svg--sunset" src={imgPath} alt={text} />
             </a>
         </li>
     );
