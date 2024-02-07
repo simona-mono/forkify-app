@@ -5,7 +5,23 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        birdy: {
+          50: '#fbdb89',
+        },
+        sunset: {
+          50: '#f48982',
+        },
+        ash: {
+          50: '#f9f5f3',
+          100: '#f2efee'
+        },
+        brown: {
+          50: '#615551',
+        },
+      },
+    },
   },
   plugins: [],
 }

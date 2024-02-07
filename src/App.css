@@ -1,0 +1,51 @@
+/* App container */
+
+.container {
+  @apply grid grid-cols-1 grid-rows-1;
+}
+
+/* Navbar */
+
+.nav {
+  @apply max-w-screen-xl bg-ash-50 relative flex flex-wrap items-center justify-between mx-auto py-4 px-6;
+}
+
+.nav__logo {
+  @apply flex items-center w-28 space-x-3 rtl:space-x-reverse;
+}
+
+.nav__actions {
+  @apply flex text-brown-50;
+}
+
+.nav__btn {
+ @apply inline-flex items-center p-2 w-9 h-9 justify-center text-sm rounded-lg md:hidden;
+}
+
+.nav__btn--gradient {
+  @apply text-white rounded-full sm:mr-1 bg-gradient-to-r from-birdy-50 to-sunset-50;
+}
+
+.nav__menu {
+  @apply w-full fixed bottom-0 left-0 pb-16 pt-2 bg-ash-50 text-brown-50 md:static md:block md:w-auto;
+}
+
+.nav__menu--hidden {
+  @apply hidden;
+}
+
+.nav__list {
+  @apply font-medium text-sm flex flex-col md:p-0 md:mt-0 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0;
+}
+
+.nav__item {
+  @apply border-b border-ash-100;
+}
+
+.item {
+ @apply flex items-center justify-between block px-6 py-4 rounded md:p-0 focus:bg-ash-100;
+}
+
+.item__svg {
+  @apply w-5 h-5 text-brown-50;
+}

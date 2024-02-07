@@ -1,17 +1,25 @@
-import { useEffect } from "react";
+import BurgerBtn from "../atoms/BurgerBtn";
+import Logo from "../atoms/Logo";
+import SearchBtn from "../atoms/SearchBtn";
+import MainMenu from "./MainMenu";
 
 export default function Navbar() {
-    
-    useEffect(() => {
 
-    }, []); 
-  
     return (
-      <div className='nav'>
+        <nav className="nav">
+            {/* Logo */}
+            <div className="nav__logo">
+             <Logo />
+            </div>
 
-
-
-        
-      </div>
+            {/* Actions */}
+            <div className="nav__actions">
+             <SearchBtn />
+             <BurgerBtn />
+            </div>
+                
+            {/* Menu */}
+             <MainMenu />
+        </nav>
     );
-  }
+}
