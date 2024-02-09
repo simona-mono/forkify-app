@@ -11,6 +11,7 @@ export default function Header() {
   
     return (
       <header className='header'>
+        <div className="header__container">
           {/* Logo */}
           <div className="header__logo">
             <Logo />
@@ -21,6 +22,7 @@ export default function Header() {
 
           {/* Nav */}
         <Navbar />
+        </div>
       </header>
     );
   }

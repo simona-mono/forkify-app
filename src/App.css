@@ -1,16 +1,20 @@
 
 body {
-  @apply font-sans font-normal leading-normal text-brown-50;
+  @apply font-sans font-normal leading-normal text-brown-50 overflow-hidden;
 }
 
 .home {
-  @apply w-full;
+  @apply w-full h-screen overflow-scroll;
 }
 
 /* Header */
 
 .header {
-  @apply relative max-w-screen-xl z-40 bg-ash-50 flex flex-wrap items-center justify-between mx-auto py-4 px-6;
+  @apply relative max-w-screen-xl z-40 bg-ash-50;
+}
+
+.header__container {
+  @apply  bg-ash-50 w-full flex flex-wrap items-center justify-between mx-auto py-4 px-6;
 }
 
 .header__logo {
@@ -36,7 +40,19 @@ body {
 }
 
 .search__results {
-  @apply fixed top-16 pb-56 left-0 -z-20 h-full w-full overflow-scroll text-xs bg-ash-50 uppercase;
+  @apply fixed top-0 pt-16 pb-48 left-0 -z-40 list-none h-full w-full overflow-scroll text-xs bg-ash-50 uppercase;
+}
+
+.search__not-found {
+  @apply flex flex-col items-center justify-center h-full px-8 text-sm text-center normal-case;
+}
+
+.search__not-found p {
+  @apply mt-2 md:ml-2 md:mt-0;
+}
+
+.search__not-found span {
+  @apply font-semibold;
 }
 
 .results {
@@ -111,6 +127,10 @@ body {
 
 .svg--sunset--tiny {
   @apply w-3.5 h-3.5 text-sunset-50;
+}
+
+.svg--sunset--big {
+  @apply w-8 h-8 text-sunset-50;
 }
 
 .svg--white {
