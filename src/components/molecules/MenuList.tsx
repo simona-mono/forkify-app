@@ -11,6 +11,9 @@ export default function MenuList() {
         <MenuItem text="Bookmarks" imgPath="../src/assets/svgs/bookmark.svg" />
         <MenuItem text="Liked" imgPath="../src/assets/svgs/like.svg" />
       </ul>
+      <div className="menu__selected">
+        
+      </div>
     </div>
     );
   }
