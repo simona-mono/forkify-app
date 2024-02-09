@@ -2,9 +2,6 @@ import CardInfo from "../atoms/card/CardInfo";
 import CardInfoBtn from "../atoms/card/CardInfoBtn";
 import CardSaveBtn from "../atoms/card/CardSaveBtn";
 
-interface CardProps {
-    content: string[];
-  }
 export default function CardActions() {
     return (
       <>
