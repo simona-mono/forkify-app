@@ -1,13 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAppContext } from '../../../contexts/AppContext';
 
 export default function CardSaveBtn() {
     const [isFilled, setIsFilled] = useState(false);
     const { recipeDetails } = useAppContext(); 
 
+    useEffect(() => {
+        if (recipeDetails) {
+            const storedRecipe = localStorage.getItem(recipeDetails.recipe_id);
+            setIsFilled(!!storedRecipe);
+        }
+    }, [recipeDetails]);
+
     const handleButtonClick = () => {
         setIsFilled(!isFilled);
-    };
+    
+        if (!isFilled && recipeDetails) {
+            localStorage.setItem(recipeDetails.recipe_id, JSON.stringify(recipeDetails));
+        } else if (recipeDetails) {
+            localStorage.removeItem(recipeDetails.recipe_id);
+        }
+    };    
 
     return (
         <div className="container--gradient-round">
