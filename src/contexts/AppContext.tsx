@@ -1,13 +1,18 @@
 import React, { createContext, useState } from 'react';
+import { Recipe } from '../models/Recipe';
 
 // Define the type for context
 type ContextType = {
   isMobileMenuOpen: boolean;
   setIsMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   toggleMobileMenu: () => void;
-  isSearchOpen: boolean,
+  isSearchOpen: boolean;
   setIsSearchOpen: React.Dispatch<React.SetStateAction<boolean>>;
   toggleMobileSearch: () => void;
+  recipeDetails: Recipe | null; 
+  setRecipeDetails: React.Dispatch<React.SetStateAction<Recipe | null>>;
+  recipeList: Recipe[] | null;
+  setRecipeList: React.Dispatch<React.SetStateAction<Recipe[] | null>>;
 };
 
 // Create context with a default value
@@ -18,6 +23,10 @@ export const AppContext = createContext<ContextType>({
   isSearchOpen: false,
   setIsSearchOpen: () => {},
   toggleMobileSearch: () => {},
+  recipeDetails: null, 
+  setRecipeDetails: () => {},
+  recipeList: null,
+  setRecipeList: () => {},
 });
 
 type Props = {
@@ -27,6 +36,8 @@ type Props = {
 export const ContextProvider = ({ children }: Props) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [recipeDetails, setRecipeDetails] = useState<Recipe | null>(null); 
+  const [recipeList, setRecipeList] = useState<Recipe[] | null>(null); 
 
   const toggleMobileMenu = () => {
     setIsSearchOpen(false);
@@ -45,7 +56,11 @@ export const ContextProvider = ({ children }: Props) => {
     toggleMobileMenu,
     isSearchOpen,
     setIsSearchOpen,
-    toggleMobileSearch
+    toggleMobileSearch,
+    recipeDetails, 
+    setRecipeDetails,
+    recipeList,
+    setRecipeList,
   };
 
   return (
@@ -56,10 +71,10 @@ export const ContextProvider = ({ children }: Props) => {
 };
 
 export const useAppContext = () => {
-    const context = React.useContext(AppContext)
-    if (context === undefined) {
-      throw new Error('useAppContext must be used within a ContextProvider')
-    }
-  
-    return context
+  const context = React.useContext(AppContext);
+  if (context === undefined) {
+    throw new Error('useAppContext must be used within a ContextProvider');
   }
+
+  return context;
+};

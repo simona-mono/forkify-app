@@ -1,7 +1,10 @@
-/* App container */
 
-.container {
-  @apply grid grid-cols-1 grid-rows-1;
+body {
+  @apply font-sans font-normal leading-normal text-brown-50;
+}
+
+.home {
+  @apply w-full;
 }
 
 /* Header */
@@ -17,7 +20,7 @@
 /* SearchBar */
 
 .search {
-  @apply w-full fixed bottom-0 left-0 px-6 pb-16 pt-2 bg-ash-50 text-brown-50 md:static md:block md:w-auto;
+  @apply w-full fixed bottom-0 left-0 z-40 px-6 pb-16 pt-2 bg-ash-50 text-brown-50 md:static md:block md:w-auto;
 }
 
 .search--hidden {
@@ -30,6 +33,30 @@
 
 .search__btn {
   @apply absolute top-11 w-full;
+}
+
+.search__results {
+  @apply fixed top-0 pb-44 left-0 z-20 h-full w-full overflow-scroll text-xs bg-ash-50 uppercase;
+}
+
+.results {
+  @apply flex flex-col;
+}
+
+.results__recipe {
+  @apply hover:bg-ash-100 px-6 py-2.5;
+}
+
+.results__recipe a {
+  @apply flex items-center;
+}
+
+.results__recipe-pic {
+  @apply w-10 h-10 mr-4 rounded-full;
+}
+
+.recipe-info__title {
+  @apply text-sunset-50 font-semibold;
 }
 
 /* Navbar */
@@ -47,11 +74,15 @@
  }
 
  .btn--search {
-  @apply flex items-center h-full;
+  @apply flex items-center h-full w-full;
  }
 
-.container--gradient {
-  @apply flex justify-center text-white rounded-full py-1 sm:mr-1 bg-gradient-to-r from-birdy-50 to-sunset-50;
+ .btn__text {
+  @apply py-1.5;
+ }
+
+.container--gradient-round {
+  @apply flex justify-center text-white rounded-full sm:mr-1 bg-gradient-to-br from-birdy-50 to-sunset-50;
 }
 
 .nav__menu {
@@ -75,11 +106,23 @@
 }
 
 .svg--sunset {
-  @apply w-5 h-5 text-sunset-50;
+  @apply w-5 h-5 text-sunset-50 shrink-0;
+}
+
+.svg--sunset--tiny {
+  @apply w-3.5 h-3.5 text-sunset-50;
 }
 
 .svg--white {
   @apply w-5 h-5 text-slate-100;
+}
+
+.svg--white--tiny {
+  @apply w-4 h-4 ml-1 text-slate-100 shrink-0;
+}
+
+.svg--white--big {
+  @apply w-6 h-6;
 }
 
 .svg--brown {
@@ -88,4 +131,98 @@
 
 .svg--shrink {
   @apply shrink-0 mr-2;
+}
+
+/* Card */ 
+
+.recipe__card {
+  @apply bg-ash-100;
+}
+
+.recipe__img {
+  @apply h-56 md:h-80;
+}
+
+.img {
+  @apply w-full h-full object-cover;
+}
+
+.recipe__head {
+  @apply relative;
+}
+
+.recipe__title {
+  @apply absolute -bottom-5 left-1/2 transform -translate-x-1/2 -skew-y-6 text-2xl md:text-3xl flex justify-center text-center uppercase text-white font-bold;
+}
+
+.recipe__title span {
+  @apply box-decoration-clone p-2 md:p-4 text-white bg-gradient-to-br from-birdy-50 to-sunset-50;
+}
+
+.recipe__ingredients {
+  @apply flex flex-col px-14 py-6 md:px-20 md:py-14;
+}
+
+.recipe__ingredients-heading, .recipe__footer-heading {
+  @apply text-center text-sunset-50 font-semibold p-3 mb-4;
+}
+
+.ingredients {
+  @apply grid grid-cols-2 gap-y-6 gap-x-8 text-xs sm:text-sm;
+}
+
+.ingredients li {
+  @apply flex items-start;
+}
+
+.ingredients__quantity {
+  @apply mx-2;
+}
+
+.recipe__info {
+  @apply flex items-center text-sm;
+}
+
+.recipe__info svg {
+  @apply w-6 h-6;
+}
+
+.recipe__details {
+  @apply md:flex items-center;
+}
+
+.recipe__actions {
+  @apply flex items-center justify-between bg-ash-50 px-8 pt-14 pb-6 md:pt-16 md:pb-8;
+}
+
+.actions__btn--tiny {
+  @apply border border-2 border-sunset-50 rounded-full mr-1 mt-3 md:mt-0;
+}
+
+.actions__btn--save {
+  @apply rounded-full p-2;
+}
+
+.recipe__info--servings {
+  @apply mx-2;
+}
+
+.recipe__info--minutes {
+  @apply mr-4 ml-2;
+}
+
+.recipe__footer {
+  @apply flex flex-col items-center bg-ash-50 py-10 px-14;
+}
+
+.recipe__footer-text {
+  @apply text-xs text-center sm:text-sm mb-6;
+}
+
+.reciper__publisher {
+  @apply font-semibold;
+}
+
+.btn--directions {
+  @apply text-xs px-16 py-4;
 }
