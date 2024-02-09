@@ -10,7 +10,7 @@ body {
 /* Header */
 
 .header {
-  @apply max-w-screen-xl bg-ash-50 relative flex flex-wrap items-center justify-between mx-auto py-4 px-6;
+  @apply relative max-w-screen-xl z-40 bg-ash-50 flex flex-wrap items-center justify-between mx-auto py-4 px-6;
 }
 
 .header__logo {
@@ -36,7 +36,7 @@ body {
 }
 
 .search__results {
-  @apply fixed top-0 pb-44 left-0 z-20 h-full w-full overflow-scroll text-xs bg-ash-50 uppercase;
+  @apply fixed top-16 pb-56 left-0 -z-20 h-full w-full overflow-scroll text-xs bg-ash-50 uppercase;
 }
 
 .results {
