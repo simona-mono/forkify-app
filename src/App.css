@@ -1,30 +1,30 @@
 
 body {
-  @apply font-sans font-normal leading-normal text-brown-50 overflow-hidden;
+  @apply font-sans font-normal leading-normal text-brown-50 overflow-hidden md:overflow-scroll bg-gradient-to-br from-birdy-50 to-sunset-50;
 }
 
 .home {
-  @apply w-full h-screen overflow-scroll;
+  @apply w-full h-screen lg:h-auto md:max-w-screen-lg lg:my-[4vw] md:mx-auto overflow-scroll md:overflow-visible ;
 }
 
 /* Header */
 
 .header {
-  @apply relative max-w-screen-xl z-40 bg-ash-50;
+  @apply relative z-40 bg-ash-50 md:rounded-t-lg;
 }
 
 .header__container {
-  @apply  bg-ash-50 w-full flex flex-wrap items-center justify-between mx-auto py-4 px-6;
+  @apply bg-ash-50 w-full lg:rounded-t-lg flex flex-wrap items-center justify-between mx-auto py-4 px-6;
 }
 
 .header__logo {
-  @apply flex items-center w-28 space-x-3 rtl:space-x-reverse;
+  @apply flex items-center w-28 space-x-3;
 }
 
 /* SearchBar */
 
 .search {
-  @apply w-full fixed bottom-0 left-0 z-40 px-6 pb-16 pt-2 bg-ash-50 text-brown-50 md:static md:block md:w-auto;
+  @apply w-full fixed bottom-0 left-0 z-40 px-6 pb-16 pt-2 md:p-0 bg-ash-50 text-brown-50 md:static md:w-auto;
 }
 
 .search--hidden {
@@ -32,11 +32,11 @@ body {
 }
 
 .search__input {
-  @apply relative pb-6;
+  @apply relative pb-6 md:flex md:pb-0;
 }
 
 .search__btn {
-  @apply absolute top-11 w-full;
+  @apply absolute top-11 w-full md:static;
 }
 
 .search__results {
@@ -78,7 +78,7 @@ body {
 /* Navbar */
 
 .nav__actions {
-  @apply flex text-brown-50;
+  @apply flex text-brown-50 md:hidden;
 }
 
 .btn {
@@ -102,7 +102,7 @@ body {
 }
 
 .nav__menu {
-  @apply w-full fixed bottom-0 left-0 pb-16 pt-2 bg-ash-50 text-brown-50 md:static md:block md:w-auto;
+  @apply w-full fixed bottom-0 left-0 pb-16 pt-2 md:p-0 bg-ash-50 text-brown-50 md:static md:block md:w-auto;
 }
 
 .nav__menu--hidden {
@@ -164,7 +164,7 @@ body {
 }
 
 .recipe__card {
-  @apply bg-ash-100;
+  @apply bg-ash-100 lg:rounded-b-lg;
 }
 
 .recipe__img {
@@ -200,15 +200,15 @@ body {
 }
 
 .ingredients {
-  @apply grid grid-cols-2 gap-y-6 gap-x-8 text-xs sm:text-sm;
+  @apply grid grid-cols-2 gap-y-6 gap-x-10 md:gap-x-8 text-xs sm:text-sm;
 }
 
 .ingredients li {
-  @apply flex items-start;
+  @apply flex flex-col sm:flex-row items-start;
 }
 
 .ingredients__quantity {
-  @apply mx-2;
+  @apply mx-1.5 sm:mx-2 shrink-0 mb-2 md:mb-0;
 }
 
 .recipe__info {
@@ -228,7 +228,7 @@ body {
 }
 
 .actions__btn--tiny {
-  @apply border border-2 border-sunset-50 rounded-full mr-1 mt-3 md:mt-0;
+  @apply border border-2 border-sunset-50 rounded-full mr-1.5 mt-3 md:mt-0 transition duration-300 hover:scale-125;
 }
 
 .actions__btn--save {
@@ -239,12 +239,20 @@ body {
   @apply mx-2;
 }
 
+.recipe__info--servings span {
+  @apply font-bold;
+}
+
 .recipe__info--minutes {
   @apply mr-4 ml-2;
 }
 
+.recipe__info--minutes span {
+  @apply font-bold;
+}
+
 .recipe__footer {
-  @apply flex flex-col items-center bg-ash-50 py-10 px-14;
+  @apply flex flex-col items-center lg:rounded-b-lg bg-ash-50 py-10 px-14;
 }
 
 .recipe__footer-text {

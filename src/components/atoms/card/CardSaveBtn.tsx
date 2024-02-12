@@ -7,18 +7,23 @@ export default function CardSaveBtn() {
     const { recipeDetails } = useAppContext(); 
 
     useEffect(() => {
-        if (recipeDetails) {
-            const storedRecipe = localStorage.getItem(recipeDetails.recipe_id);
-            setIsFilled(!!storedRecipe);
-        }
+            const bookmarksStorage = localStorage.getItem('bookmarks');
+            if (bookmarksStorage && recipeDetails) {
+                const bookmarks = JSON.parse(bookmarksStorage);
+                const isFilled = bookmarks.some((bookmark: any) => bookmark.recipe_id === recipeDetails.recipe_id);
+                setIsFilled(isFilled);
+            } else {
+                setIsFilled(false);
+            }
     }, [recipeDetails]);
+    
 
     const handleButtonClick = () => {
         setIsFilled(!isFilled);
     
         const bookmarksStorage = localStorage.getItem('bookmarks');
         let bookmarks = bookmarksStorage ? JSON.parse(bookmarksStorage) : [];
-        
+
         if (!isFilled && recipeDetails) {
             bookmarks.push(recipeDetails);
             localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
