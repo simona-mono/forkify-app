@@ -10,7 +10,7 @@ interface Recipe {
 
 interface RecipeListProps {
   list: Recipe[];
-  setSearchText: (text: string) => void;
+  setSearchText?: (text: string) => void;
 }
 
 export default function RecipeList({ list, setSearchText }: RecipeListProps) {
@@ -30,7 +30,7 @@ export default function RecipeList({ list, setSearchText }: RecipeListProps) {
   const handleRecipeClick = (clickedRecipe: Recipe) => {
     setRecipeList([]);
     setIsSearchOpen(false);
-    setSearchText(''); // Clear the search text
+   if(setSearchText) setSearchText(''); // If it's opening from the searchbar, clear the input
     getRecipe(Number(clickedRecipe.recipe_id));
   };
 
