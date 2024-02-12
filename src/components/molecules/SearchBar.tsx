@@ -43,7 +43,7 @@ export default function SearchBar() {
           <Input
             id="search-input"
             type="text"
-            placeholder=""
+            placeholder="Search over 1,000,000 recipes..."
             value={searchText}
             onChange={handleInputChange}
           />

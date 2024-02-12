@@ -1,10 +1,10 @@
 
 body {
-  @apply font-sans font-normal leading-normal text-brown-50 overflow-hidden md:overflow-scroll bg-gradient-to-br from-birdy-50 to-sunset-50;
+  @apply font-nunito font-normal leading-normal text-brown-50 overflow-hidden md:overflow-scroll bg-gradient-to-br from-birdy-50 to-sunset-50;
 }
 
 .home {
-  @apply w-full h-screen lg:h-auto md:max-w-screen-lg lg:my-[4vw] md:mx-auto overflow-scroll md:overflow-visible ;
+  @apply relative w-full h-screen lg:h-auto md:max-w-screen-xl xl:my-[4vw] md:mx-auto overflow-scroll md:overflow-visible ;
 }
 
 /* Header */
@@ -14,17 +14,17 @@ body {
 }
 
 .header__container {
-  @apply bg-ash-50 w-full lg:rounded-t-lg flex flex-wrap items-center justify-between mx-auto py-4 px-6;
+  @apply bg-ash-50 w-full lg:rounded-t-lg flex flex-wrap items-center justify-between mx-auto px-6 py-4 md:p-0 md:px-8;
 }
 
 .header__logo {
-  @apply flex items-center w-28 space-x-3;
+  @apply flex items-center w-28 md:w-36 space-x-3;
 }
 
 /* SearchBar */
 
 .search {
-  @apply w-full fixed bottom-0 left-0 z-40 px-6 pb-16 pt-2 md:p-0 bg-ash-50 text-brown-50 md:static md:w-auto;
+  @apply w-full fixed bottom-0 left-0 z-40 bg-ash-50 text-brown-50 px-6 pb-16 pt-2 md:p-0 md:basis-2/5 md:static md:w-auto;
 }
 
 .search--hidden {
@@ -35,8 +35,12 @@ body {
   @apply relative pb-6 md:flex md:pb-0;
 }
 
+.search__input input {
+  @apply block w-full p-4 ps-8 text-sm text-brown-50 placeholder:text-gray-300 placeholder:text-base rounded-full focus:outline-none;
+}
+
 .search__btn {
-  @apply absolute top-11 w-full md:static;
+  @apply absolute top-11 w-full md:top-0 md:-right-6 md:w-auto;
 }
 
 .search__results {
@@ -82,7 +86,7 @@ body {
 }
 
 .btn {
- @apply inline-flex items-center p-2 w-9 h-9 justify-center text-sm rounded-lg;
+ @apply inline-flex items-center justify-center p-2 w-9 h-9 rounded-lg text-sm md:text-base;
 }
 
 .btn--burger, .btn--search {
@@ -90,7 +94,7 @@ body {
  }
 
  .btn--search {
-  @apply flex items-center h-full w-full transition duration-300 hover:scale-105;
+  @apply flex items-center h-full w-full md:px-8 transition duration-300 hover:scale-105;
  }
 
  .btn__text {
@@ -110,11 +114,11 @@ body {
 }
 
 .menu {
-  @apply font-medium text-sm flex flex-col md:p-0 md:mt-0 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0;
+  @apply font-medium text-sm md:font-bold md:uppercase flex flex-col md:flex-row md:p-0 md:mt-0 rounded-lg md:mt-0 md:border-0;
 }
 
 .menu__item {
-  @apply border-b border-ash-100;
+  @apply flex items-center border-b md:h-24 md:px-4 md:border-none border-ash-100 transition duration-300 hover:bg-ash-100 cursor-pointer;
 }
 
 .menu__bookmarks {
@@ -122,11 +126,11 @@ body {
 }
 
 .item {
- @apply flex items-center justify-between block px-6 py-4 rounded md:p-0 focus:bg-ash-100;
+ @apply flex md:flex-row-reverse items-center justify-between w-full md:w-auto px-6 py-4 rounded md:p-0 focus:bg-ash-100;
 }
 
 .svg--sunset {
-  @apply w-5 h-5 text-sunset-50 shrink-0;
+  @apply w-5 h-5 md:w-7 md:h-7 text-sunset-50 shrink-0 md:mr-1;
 }
 
 .svg--sunset--tiny {
@@ -236,7 +240,7 @@ body {
 }
 
 .recipe__info--servings {
-  @apply mx-2;
+  @apply mx-2 ;
 }
 
 .recipe__info--servings span {
