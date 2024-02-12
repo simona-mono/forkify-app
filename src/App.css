@@ -159,6 +159,10 @@ body {
 
 /* Card */ 
 
+.recipe--blur::after {
+  @apply absolute top-0 left-0 content-[''] w-full h-full bg-gray-600 md:bg-transparent opacity-40;
+}
+
 .recipe__card {
   @apply bg-ash-100;
 }
