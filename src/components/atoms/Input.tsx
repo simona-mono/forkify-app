@@ -9,6 +9,7 @@ interface InputProps {
 }
 
 export default function Input({ id, type, placeholder, value, onChange }: InputProps) {
+  
   return (
     <input
       type={type}

@@ -1,13 +1,13 @@
-import { useAppContext } from "../../contexts/AppContext";
 import { useEffect } from "react";
 import RecipeList from "../atoms/RecipeList";
 import NoResults from "../atoms/NoResults";
+import { ActionType, useBookmarkContext } from "../../contexts/BookmarkContext";
 
 export default function Bookmarks() {
-    const { getSavedRecipes, savedRecipes } = useAppContext(); 
+    const { dispatch, savedRecipes } = useBookmarkContext(); 
 
     useEffect(() => {
-        getSavedRecipes();
+      dispatch({ type: ActionType.GET_BOOKMARKS }); 
       }, []); 
   
     return (
