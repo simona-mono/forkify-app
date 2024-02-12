@@ -1,24 +1,24 @@
 
 body {
-  @apply font-sans font-normal leading-normal text-brown-50 overflow-hidden;
+  @apply font-sans font-normal leading-normal text-brown-50 overflow-hidden md:overflow-scroll bg-gradient-to-br from-birdy-50 to-sunset-50;
 }
 
 .home {
-  @apply w-full h-screen overflow-scroll;
+  @apply w-full h-screen lg:h-auto md:max-w-screen-lg lg:my-[4vw] md:mx-auto overflow-scroll md:overflow-visible ;
 }
 
 /* Header */
 
 .header {
-  @apply relative max-w-screen-xl z-40 bg-ash-50;
+  @apply relative z-40 bg-ash-50 md:rounded-t-lg;
 }
 
 .header__container {
-  @apply  bg-ash-50 w-full flex flex-wrap items-center justify-between mx-auto py-4 px-6;
+  @apply bg-ash-50 w-full lg:rounded-t-lg flex flex-wrap items-center justify-between mx-auto py-4 px-6;
 }
 
 .header__logo {
-  @apply flex items-center w-28 space-x-3 rtl:space-x-reverse;
+  @apply flex items-center w-28 space-x-3;
 }
 
 /* SearchBar */
@@ -164,7 +164,7 @@ body {
 }
 
 .recipe__card {
-  @apply bg-ash-100;
+  @apply bg-ash-100 lg:rounded-b-lg;
 }
 
 .recipe__img {
@@ -244,7 +244,7 @@ body {
 }
 
 .recipe__footer {
-  @apply flex flex-col items-center bg-ash-50 py-10 px-14;
+  @apply flex flex-col items-center lg:rounded-b-lg bg-ash-50 py-10 px-14;
 }
 
 .recipe__footer-text {
