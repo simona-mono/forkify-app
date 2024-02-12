@@ -1,41 +1,36 @@
 import { useState, useEffect } from 'react';
 import { useAppContext } from '../../../contexts/AppContext';
+import { ActionType, useBookmarkContext } from '../../../contexts/BookmarkContext';
 import { Recipe } from '../../../models/Recipe';
 
 export default function CardSaveBtn() {
     const [isFilled, setIsFilled] = useState(false);
-    const { recipeDetails } = useAppContext(); 
+    const { recipeDetails } = useAppContext();
+    const { savedRecipes, dispatch } = useBookmarkContext(); 
 
     useEffect(() => {
-            const bookmarksStorage = localStorage.getItem('bookmarks');
-            if (bookmarksStorage && recipeDetails) {
-                const bookmarks = JSON.parse(bookmarksStorage);
-                const isFilled = bookmarks.some((bookmark: any) => bookmark.recipe_id === recipeDetails.recipe_id);
-                setIsFilled(isFilled);
-            } else {
-                setIsFilled(false);
-            }
-    }, [recipeDetails]);
-    
+        dispatch({ type: ActionType.GET_BOOKMARKS }); 
+        const bookmarks = savedRecipes;
+        
+        if (bookmarks && recipeDetails) {
+            const isFilled = bookmarks.some((bookmark: Recipe) => bookmark.recipe_id === recipeDetails.recipe_id);
+            setIsFilled(isFilled);
+        } else {
+            setIsFilled(false);
+        }
+    }, [recipeDetails, savedRecipes.length]);
 
     const handleButtonClick = () => {
         setIsFilled(!isFilled);
     
-        const bookmarksStorage = localStorage.getItem('bookmarks');
-        let bookmarks = bookmarksStorage ? JSON.parse(bookmarksStorage) : [];
-
-        if (!isFilled && recipeDetails) {
-            bookmarks.push(recipeDetails);
-            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
-        } else if (recipeDetails) {
-            const index = bookmarks.findIndex((item: Recipe) => item.recipe_id === recipeDetails.recipe_id);
-            if (index !== -1) {
-                bookmarks.splice(index, 1);
-                localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+        if (recipeDetails) {
+            if (!isFilled) {
+                dispatch({ type: ActionType.ADD_BOOKMARK, payload: recipeDetails });
+            } else {
+                dispatch({ type: ActionType.REMOVE_BOOKMARK, payload: recipeDetails.recipe_id });
             }
         }
-    };
-       
+    };    
 
     return (
         <div className="container--gradient-round">

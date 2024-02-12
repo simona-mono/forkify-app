@@ -2,7 +2,6 @@
 import React, { createContext, useState } from 'react';
 import { Recipe } from '../models/Recipe';
 
-// Define the type for context
 type ContextType = {
   isMobileMenuOpen: boolean;
   setIsMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -11,19 +10,16 @@ type ContextType = {
   setIsSearchOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isSavedOpen: boolean;
   setIsSavedOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  getSavedRecipes: () => void;
   toggleMobileSearch: () => void;
   toggleSavedRecipes: () => void;
   recipeDetails: Recipe | null; 
   setRecipeDetails: React.Dispatch<React.SetStateAction<Recipe | null>>;
   recipeList: Recipe[] | null;
   setRecipeList: React.Dispatch<React.SetStateAction<Recipe[] | null>>;
-  savedRecipes: Recipe[];
   servings: number;
   setServings: React.Dispatch<React.SetStateAction<number>>;
 };
 
-// Create context with a default value
 export const AppContext = createContext<ContextType>({
   isMobileMenuOpen: false,
   setIsMobileMenuOpen: () => {},
@@ -32,14 +28,12 @@ export const AppContext = createContext<ContextType>({
   setIsSearchOpen: () => {},
   isSavedOpen: false,
   setIsSavedOpen: () => {},
-  getSavedRecipes: () => {},
   toggleMobileSearch: () => {},
   toggleSavedRecipes: () => {},
   recipeDetails: null, 
   setRecipeDetails: () => {},
   recipeList: null,
   setRecipeList: () => {},
-  savedRecipes: [],
   servings: 1,
   setServings: () => {},
 });
@@ -54,15 +48,7 @@ export const ContextProvider = ({ children }: Props) => {
   const [isSavedOpen, setIsSavedOpen] = useState(false);
   const [recipeDetails, setRecipeDetails] = useState<Recipe | null>(null); 
   const [recipeList, setRecipeList] = useState<Recipe[] | null>(null); 
-  const [savedRecipes, setSavedRecipes] = useState<Recipe[]>([]);
   const [servings, setServings] = useState(1);
-
-  const getSavedRecipes = () => {
-    const savedRecipesFromStorage = localStorage.getItem('bookmarks');
-    if (savedRecipesFromStorage) {
-      setSavedRecipes(JSON.parse(savedRecipesFromStorage));
-    }
-  };
 
   const toggleMobileMenu = () => {
     setIsSearchOpen(false);
@@ -93,12 +79,10 @@ export const ContextProvider = ({ children }: Props) => {
     setIsSavedOpen,
     toggleMobileSearch,
     toggleSavedRecipes,
-    getSavedRecipes,
     recipeDetails, 
     setRecipeDetails,
     recipeList,
     setRecipeList,
-    savedRecipes,
     servings,
     setServings
   };
