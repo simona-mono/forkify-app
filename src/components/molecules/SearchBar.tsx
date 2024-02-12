@@ -3,10 +3,10 @@ import { useAppContext } from "../../contexts/AppContext";
 import { getRecipeByQuery } from "../../services/api/apiRecipes";
 import Input from "../atoms/Input";
 import SearchBtn from "../atoms/SearchBtn";
-import RecipeList from '../atoms/RecipeList';
+import SearchResults from './SearchResults';
 
 export default function SearchBar() {
-  const { isSearchOpen, setRecipeList, recipeList } = useAppContext(); 
+  const { isSearchOpen, setRecipeList } = useAppContext(); 
   const [searchText, setSearchText] = useState('');
 
   const getRecipeList = (text: string) => {
@@ -27,27 +27,14 @@ export default function SearchBar() {
   const handleSearch = () => {
     setRecipeList([])
     getRecipeList(searchText);
+    setSearchText('');
     console.log(searchText)
   };
   
   return (
     <>
   {isSearchOpen &&
-  <div className='search__results'>
-    {recipeList && recipeList.length > 0 ? (
-      <RecipeList list={recipeList} setSearchText={setSearchText} />
-    ) : (
-      <li className={recipeList?.length === 0 ? 'search__not-found' : 'hidden'}>
-        <svg className="svg--sunset--big" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 13V8m0 8h0m9-4a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-        </svg>
-        <p>
-        No results, <br />
-        try typing <span> pizza! </span>
-        </p>
-      </li>
-    )}
-  </div>
+  <SearchResults />
 }
 
     <div className={`search ${isSearchOpen ? '' : 'search--hidden'}`}>

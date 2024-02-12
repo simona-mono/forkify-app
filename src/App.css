@@ -60,11 +60,11 @@ body {
 }
 
 .results__recipe {
-  @apply hover:bg-ash-100 px-6 py-2.5;
+  @apply hover:bg-ash-100 transition duration-300 hover:-translate-y-1;
 }
 
 .results__recipe a {
-  @apply flex items-center;
+  @apply flex items-center px-6 py-3;
 }
 
 .results__recipe-pic {
@@ -90,7 +90,7 @@ body {
  }
 
  .btn--search {
-  @apply flex items-center h-full w-full;
+  @apply flex items-center h-full w-full transition duration-300 hover:scale-105;
  }
 
  .btn__text {
@@ -98,7 +98,7 @@ body {
  }
 
 .container--gradient-round {
-  @apply flex justify-center text-white rounded-full sm:mr-1 bg-gradient-to-br from-birdy-50 to-sunset-50;
+  @apply flex justify-center text-white rounded-full sm:mr-1 bg-gradient-to-br from-birdy-50 to-sunset-50 transition duration-300 hover:scale-105;
 }
 
 .nav__menu {
@@ -115,6 +115,10 @@ body {
 
 .menu__item {
   @apply border-b border-ash-100;
+}
+
+.menu__bookmarks {
+  @apply fixed top-0 pt-16 pb-48 left-0 -z-40 list-none h-full w-full bg-ash-50 overflow-scroll text-xs bg-ash-50 uppercase;
 }
 
 .item {
@@ -154,6 +158,10 @@ body {
 }
 
 /* Card */ 
+
+.recipe--blur::after {
+  @apply absolute top-0 left-0 content-[''] w-full h-full bg-gray-600 md:bg-transparent opacity-40;
+}
 
 .recipe__card {
   @apply bg-ash-100;

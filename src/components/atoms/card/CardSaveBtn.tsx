@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAppContext } from '../../../contexts/AppContext';
+import { Recipe } from '../../../models/Recipe';
 
 export default function CardSaveBtn() {
     const [isFilled, setIsFilled] = useState(false);
@@ -15,12 +16,21 @@ export default function CardSaveBtn() {
     const handleButtonClick = () => {
         setIsFilled(!isFilled);
     
+        const bookmarksStorage = localStorage.getItem('bookmarks');
+        let bookmarks = bookmarksStorage ? JSON.parse(bookmarksStorage) : [];
+        
         if (!isFilled && recipeDetails) {
-            localStorage.setItem(recipeDetails.recipe_id, JSON.stringify(recipeDetails));
+            bookmarks.push(recipeDetails);
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
         } else if (recipeDetails) {
-            localStorage.removeItem(recipeDetails.recipe_id);
+            const index = bookmarks.findIndex((item: Recipe) => item.recipe_id === recipeDetails.recipe_id);
+            if (index !== -1) {
+                bookmarks.splice(index, 1);
+                localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            }
         }
-    };    
+    };
+       
 
     return (
         <div className="container--gradient-round">

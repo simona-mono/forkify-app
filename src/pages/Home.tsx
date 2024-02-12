@@ -8,7 +8,7 @@ export default function Home() {
   const { setRecipeDetails } = useAppContext(); 
 
   const getRecipe = (id?: number) => {
-    const defaultId = id ? id : 47746 ;
+    const defaultId = id ? id : 41470 ;
     getRecipeById(defaultId)
     .then((res) => {
       console.log(res.data);
