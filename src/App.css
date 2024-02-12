@@ -24,7 +24,7 @@ body {
 /* SearchBar */
 
 .search {
-  @apply w-full fixed bottom-0 left-0 z-40 px-6 pb-16 pt-2 bg-ash-50 text-brown-50 md:static md:block md:w-auto;
+  @apply w-full fixed bottom-0 left-0 z-40 px-6 pb-16 pt-2 md:p-0 bg-ash-50 text-brown-50 md:static md:w-auto;
 }
 
 .search--hidden {
@@ -32,11 +32,11 @@ body {
 }
 
 .search__input {
-  @apply relative pb-6;
+  @apply relative pb-6 md:flex md:pb-0;
 }
 
 .search__btn {
-  @apply absolute top-11 w-full;
+  @apply absolute top-11 w-full md:static;
 }
 
 .search__results {
@@ -78,7 +78,7 @@ body {
 /* Navbar */
 
 .nav__actions {
-  @apply flex text-brown-50;
+  @apply flex text-brown-50 md:hidden;
 }
 
 .btn {
@@ -102,7 +102,7 @@ body {
 }
 
 .nav__menu {
-  @apply w-full fixed bottom-0 left-0 pb-16 pt-2 bg-ash-50 text-brown-50 md:static md:block md:w-auto;
+  @apply w-full fixed bottom-0 left-0 pb-16 pt-2 md:p-0 bg-ash-50 text-brown-50 md:static md:block md:w-auto;
 }
 
 .nav__menu--hidden {
@@ -200,15 +200,15 @@ body {
 }
 
 .ingredients {
-  @apply grid grid-cols-2 gap-y-6 gap-x-8 text-xs sm:text-sm;
+  @apply grid grid-cols-2 gap-y-6 gap-x-10 md:gap-x-8 text-xs sm:text-sm;
 }
 
 .ingredients li {
-  @apply flex items-start;
+  @apply flex flex-col sm:flex-row items-start;
 }
 
 .ingredients__quantity {
-  @apply mx-2;
+  @apply mx-1.5 sm:mx-2 shrink-0 mb-2 md:mb-0;
 }
 
 .recipe__info {
@@ -228,7 +228,7 @@ body {
 }
 
 .actions__btn--tiny {
-  @apply border border-2 border-sunset-50 rounded-full mr-1 mt-3 md:mt-0;
+  @apply border border-2 border-sunset-50 rounded-full mr-1.5 mt-3 md:mt-0 transition duration-300 hover:scale-125;
 }
 
 .actions__btn--save {
@@ -239,8 +239,16 @@ body {
   @apply mx-2;
 }
 
+.recipe__info--servings span {
+  @apply font-bold;
+}
+
 .recipe__info--minutes {
   @apply mr-4 ml-2;
+}
+
+.recipe__info--minutes span {
+  @apply font-bold;
 }
 
 .recipe__footer {

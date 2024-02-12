@@ -1,5 +1,5 @@
 // Import necessary modules and types
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState } from 'react';
 import { Recipe } from '../models/Recipe';
 
 // Define the type for context
@@ -19,6 +19,8 @@ type ContextType = {
   recipeList: Recipe[] | null;
   setRecipeList: React.Dispatch<React.SetStateAction<Recipe[] | null>>;
   savedRecipes: Recipe[];
+  servings: number;
+  setServings: React.Dispatch<React.SetStateAction<number>>;
 };
 
 // Create context with a default value
@@ -38,6 +40,8 @@ export const AppContext = createContext<ContextType>({
   recipeList: null,
   setRecipeList: () => {},
   savedRecipes: [],
+  servings: 1,
+  setServings: () => {},
 });
 
 type Props = {
@@ -51,10 +55,7 @@ export const ContextProvider = ({ children }: Props) => {
   const [recipeDetails, setRecipeDetails] = useState<Recipe | null>(null); 
   const [recipeList, setRecipeList] = useState<Recipe[] | null>(null); 
   const [savedRecipes, setSavedRecipes] = useState<Recipe[]>([]);
-
-  useEffect(() => {
-    getSavedRecipes();
-  }, []);
+  const [servings, setServings] = useState(1);
 
   const getSavedRecipes = () => {
     const savedRecipesFromStorage = localStorage.getItem('bookmarks');
@@ -98,6 +99,8 @@ export const ContextProvider = ({ children }: Props) => {
     recipeList,
     setRecipeList,
     savedRecipes,
+    servings,
+    setServings
   };
 
   return (
