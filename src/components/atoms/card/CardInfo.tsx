@@ -1,9 +1,7 @@
+import { useAppContext } from "../../../contexts/AppContext";
 
-interface CardProps {
-    servings: number;
-    minutes: number;
-}
-export default function CardInfo({ servings, minutes }: CardProps) {
+export default function CardInfo() {
+  const { servings } = useAppContext(); 
   
     return (
     <>
@@ -12,7 +10,7 @@ export default function CardInfo({ servings, minutes }: CardProps) {
         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
        </svg>
         <p className="recipe__info--minutes">
-        <span>{minutes} </span> 
+        <span>60 </span> 
          MINUTES</p>
         </div>
         <div className="recipe__info">

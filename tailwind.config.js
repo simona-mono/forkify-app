@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'nunito': ['"Nunito Sans"', 'sans-serif'],
+      },
       colors: {
         birdy: {
           50: '#fbdb89',
@@ -19,6 +22,7 @@ export default {
         },
         brown: {
           50: '#615551',
+          100: '#918581'
         },
       },
     },

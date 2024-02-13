@@ -33,17 +33,16 @@ export default function SearchBar() {
   
   return (
     <>
-  {isSearchOpen &&
-  <SearchResults />
-}
-
+    {isSearchOpen && (
+   <SearchResults className='search__results--mobile' />
+    )}
     <div className={`search ${isSearchOpen ? '' : 'search--hidden'}`}>
       <form className="search__form">   
         <div className="search__input">
           <Input
             id="search-input"
             type="text"
-            placeholder=""
+            placeholder="Search over 1,000,000 recipes..."
             value={searchText}
             onChange={handleInputChange}
           />

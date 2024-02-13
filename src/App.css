@@ -1,46 +1,54 @@
 
 body {
-  @apply font-sans font-normal leading-normal text-brown-50 overflow-hidden md:overflow-scroll bg-gradient-to-br from-birdy-50 to-sunset-50;
+  @apply font-nunito font-normal leading-normal text-brown-50 overflow-hidden lg:overflow-scroll bg-gradient-to-br from-birdy-50 to-sunset-50;
 }
 
 .home {
-  @apply w-full h-screen lg:h-auto md:max-w-screen-lg lg:my-[4vw] md:mx-auto overflow-scroll md:overflow-visible ;
+  @apply relative w-full h-screen lg:h-auto lg:max-w-screen-xl xl:my-[4vw] lg:mx-auto overflow-scroll lg:overflow-visible grid;
 }
 
 /* Header */
 
 .header {
-  @apply relative z-40 bg-ash-50 md:rounded-t-lg;
+  @apply relative z-40 bg-ash-50 lg:rounded-t-lg;
 }
 
 .header__container {
-  @apply bg-ash-50 w-full lg:rounded-t-lg flex flex-wrap items-center justify-between mx-auto py-4 px-6;
+  @apply bg-ash-50 w-full lg:rounded-t-lg flex flex-wrap items-center justify-between mx-auto px-6 py-4 lg:p-0 lg:px-8;
 }
 
 .header__logo {
-  @apply flex items-center w-28 space-x-3;
+  @apply flex items-center w-28 lg:w-36 space-x-3;
 }
 
 /* SearchBar */
 
 .search {
-  @apply w-full fixed bottom-0 left-0 z-40 px-6 pb-16 pt-2 md:p-0 bg-ash-50 text-brown-50 md:static md:w-auto;
+  @apply w-full fixed bottom-0 left-0 z-40 bg-ash-50 text-brown-50 px-6 pb-16 pt-2 lg:p-0 lg:basis-2/5 lg:static lg:w-auto;
 }
 
 .search--hidden {
-  @apply hidden md:block;
+  @apply hidden lg:block;
 }
 
 .search__input {
-  @apply relative pb-6 md:flex md:pb-0;
+  @apply relative pb-6 lg:flex lg:pb-0;
+}
+
+.search__input input {
+  @apply block w-full p-4 ps-8 text-sm text-brown-50 placeholder:text-gray-300 placeholder:text-base rounded-full focus:outline-none;
 }
 
 .search__btn {
-  @apply absolute top-11 w-full md:static;
+  @apply absolute top-11 w-full lg:top-0 lg:-right-6 lg:w-auto;
 }
 
-.search__results {
-  @apply fixed top-0 pt-16 pb-48 left-0 -z-40 list-none h-full w-full overflow-scroll text-xs bg-ash-50 uppercase;
+.search__results--mobile {
+  @apply lg:hidden fixed top-0 pt-20 pb-48 left-0 -z-40 list-none h-full w-full overflow-scroll text-xs bg-white uppercase;
+}
+
+.search__results--desktop {
+  @apply hidden lg:block lg:rounded-bl-lg pt-6 pb-48 lg:pb-10 list-none h-full w-full overflow-scroll text-sm bg-white uppercase;
 }
 
 .search__not-found {
@@ -48,7 +56,7 @@ body {
 }
 
 .search__not-found p {
-  @apply mt-2 md:ml-2 md:mt-0;
+  @apply mt-2 lg:ml-2 lg:mt-0;
 }
 
 .search__not-found span {
@@ -59,42 +67,100 @@ body {
   @apply flex flex-col;
 }
 
+.results-container {
+  @apply lg:h-full;
+}
+
+.results-container-desktop {
+  @apply hidden h-full lg:inline-flex flex-col justify-between;
+}
+
+.results-container-mobile {
+  @apply lg:hidden;
+}
+ 
 .results__recipe {
   @apply hover:bg-ash-100 transition duration-300 hover:-translate-y-1;
 }
 
 .results__recipe a {
-  @apply flex items-center px-6 py-3;
+  @apply flex items-center px-6 py-3 lg:py-4 lg:px-8;
 }
 
-.results__recipe-pic {
-  @apply w-10 h-10 mr-4 rounded-full;
+.results__recipe-info {
+  @apply w-full;
+}
+
+.results__recipe-img {
+  @apply relative w-10 h-10 shrink-0 lg:w-14 lg:h-14 mr-3 lg:mr-5;
+}
+
+.results__recipe-img img {
+  @apply w-full h-full rounded-full;
+}
+
+.results__recipe-img::after {
+  @apply absolute top-0 left-0 content-[''] w-full h-full rounded-full bg-gradient-to-br from-birdy-50 to-sunset-50 opacity-40;
 }
 
 .recipe-info__title {
   @apply text-sunset-50 font-semibold;
 }
 
+.recipe-info__publisher {
+  @apply text-brown-100 text-xs mt-1 font-semibold;
+}
+
+.pagination {
+  @apply mt-24 px-8 flex justify-between;
+}
+
+.pagination__btn--previous, .pagination__btn--next {
+  @apply flex items-center rounded-full px-3.5 py-1.5 font-bold text-sunset-50 bg-ash-50 disabled:text-gray-300;
+}
+
+.pagination__btn--previous {
+  @apply flex-row-reverse;
+}
+
+.pagination__btn--previous svg {
+  @apply rotate-180;
+}
+
+.pagination__btn--previous span {
+  @apply ml-1.5;
+}
+
+.pagination__btn--next span {
+  @apply mr-1.5;
+}
+
+.copyright {
+  @apply mt-12 px-8 normal-case text-brown-100;
+}
+
+/* Main */
+
+.main {
+  @apply lg:grid lg:grid-cols-3 lg:rounded-b-lg;
+}
+
 /* Navbar */
 
 .nav__actions {
-  @apply flex text-brown-50 md:hidden;
+  @apply flex text-brown-50 lg:hidden;
 }
 
 .btn {
- @apply inline-flex items-center p-2 w-9 h-9 justify-center text-sm rounded-lg;
+ @apply inline-flex items-center justify-center p-2 w-9 h-9 rounded-lg text-sm lg:text-base;
 }
 
 .btn--burger, .btn--search {
-  @apply md:hidden;
+  @apply lg:hidden;
  }
 
  .btn--search {
-  @apply flex items-center h-full w-full transition duration-300 hover:scale-105;
- }
-
- .btn__text {
-  @apply py-1.5;
+  @apply flex items-center h-full w-full py-3 lg:px-8 lg:py-3.5;
  }
 
 .container--gradient-round {
@@ -102,19 +168,19 @@ body {
 }
 
 .nav__menu {
-  @apply w-full fixed bottom-0 left-0 pb-16 pt-2 md:p-0 bg-ash-50 text-brown-50 md:static md:block md:w-auto;
+  @apply w-full fixed bottom-0 left-0 pb-16 pt-2 lg:p-0 bg-ash-50 text-brown-50 lg:static lg:block lg:w-auto;
 }
 
 .nav__menu--hidden {
-  @apply hidden md:block;
+  @apply hidden lg:block;
 }
 
 .menu {
-  @apply font-medium text-sm flex flex-col md:p-0 md:mt-0 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0;
+  @apply font-medium text-sm lg:font-bold lg:uppercase flex flex-col lg:flex-row lg:p-0 lg:mt-0 rounded-lg lg:mt-0 lg:border-0;
 }
 
 .menu__item {
-  @apply border-b border-ash-100;
+  @apply flex items-center border-b lg:h-24 lg:px-4 lg:border-none border-ash-100 transition duration-300 hover:bg-ash-100 cursor-pointer;
 }
 
 .menu__bookmarks {
@@ -122,11 +188,11 @@ body {
 }
 
 .item {
- @apply flex items-center justify-between block px-6 py-4 rounded md:p-0 focus:bg-ash-100;
+ @apply flex lg:flex-row-reverse items-center justify-between w-full lg:w-auto px-6 py-4 rounded lg:p-0 focus:bg-ash-100;
 }
 
 .svg--sunset {
-  @apply w-5 h-5 text-sunset-50 shrink-0;
+  @apply w-5 h-5 lg:w-7 lg:h-7 text-sunset-50 shrink-0 lg:mr-1;
 }
 
 .svg--sunset--tiny {
@@ -160,15 +226,15 @@ body {
 /* Card */ 
 
 .recipe--blur::after {
-  @apply absolute top-0 left-0 content-[''] w-full h-full bg-gray-600 md:bg-transparent opacity-40;
+  @apply absolute top-0 left-0 content-[''] w-full h-full bg-gray-600 lg:bg-transparent opacity-40;
 }
 
 .recipe__card {
-  @apply bg-ash-100 lg:rounded-b-lg;
+  @apply flex flex-col h-full bg-ash-100 lg:rounded-br-lg lg:col-span-2;
 }
 
 .recipe__img {
-  @apply relative h-60 md:h-80;
+  @apply relative h-60 lg:h-80;
 }
 
 .recipe__img::after {
@@ -184,51 +250,51 @@ body {
 }
 
 .recipe__title {
-  @apply absolute -bottom-5 left-1/2 transform -translate-x-1/2 -skew-y-6 text-2xl md:text-3xl flex justify-center text-center uppercase text-white font-bold;
+  @apply absolute -bottom-5 left-1/2 transform -translate-x-1/2 -skew-y-6 text-2xl lg:text-3xl flex justify-center text-center uppercase text-white font-bold;
 }
 
 .recipe__title span {
-  @apply box-decoration-clone p-2 md:p-4 text-white bg-gradient-to-br from-birdy-50 to-sunset-50;
+  @apply box-decoration-clone p-2 lg:p-4 text-white bg-gradient-to-br from-birdy-50 to-sunset-50;
 }
 
 .recipe__ingredients {
-  @apply flex flex-col px-14 py-6 md:px-20 md:py-14;
+  @apply flex flex-col px-14 py-6 lg:px-20 lg:py-14;
 }
 
 .recipe__ingredients-heading, .recipe__footer-heading {
-  @apply text-center text-sunset-50 font-semibold p-3 mb-4;
+  @apply text-center text-sunset-50 lg:text-lg font-bold mb-7;
 }
 
 .ingredients {
-  @apply grid grid-cols-2 gap-y-6 gap-x-10 md:gap-x-8 text-xs sm:text-sm;
+  @apply grid grid-cols-2 gap-y-6 gap-x-10 lg:gap-x-8 text-xs sm:text-sm lg:text-base;
 }
 
 .ingredients li {
-  @apply flex flex-col sm:flex-row items-start;
+  @apply flex flex-row items-start;
 }
 
 .ingredients__quantity {
-  @apply mx-1.5 sm:mx-2 shrink-0 mb-2 md:mb-0;
+  @apply mx-1.5 sm:mx-2 shrink-0;
 }
 
 .recipe__info {
-  @apply flex items-center text-sm;
+  @apply flex items-center text-sm lg:text-base;
 }
 
 .recipe__info svg {
-  @apply w-6 h-6;
+  @apply w-6 h-6 lg:w-7 lg:h-7;
 }
 
 .recipe__details {
-  @apply md:flex items-center;
+  @apply lg:flex items-center;
 }
 
 .recipe__actions {
-  @apply flex items-center justify-between bg-ash-50 px-8 pt-14 pb-6 md:pt-16 md:pb-8;
+  @apply flex items-center justify-between bg-ash-50 px-10 pt-14 pb-6 lg:px-20 lg:pt-20 lg:pb-10;
 }
 
 .actions__btn--tiny {
-  @apply border border-2 border-sunset-50 rounded-full mr-1.5 mt-3 md:mt-0 transition duration-300 hover:scale-125;
+  @apply border border-2 border-sunset-50 rounded-full mr-1.5 mt-3 lg:mt-0 transition duration-300 hover:scale-125;
 }
 
 .actions__btn--save {
@@ -236,7 +302,7 @@ body {
 }
 
 .recipe__info--servings {
-  @apply mx-2;
+  @apply mx-2 lg:mr-6;
 }
 
 .recipe__info--servings span {
@@ -252,11 +318,11 @@ body {
 }
 
 .recipe__footer {
-  @apply flex flex-col items-center lg:rounded-b-lg bg-ash-50 py-10 px-14;
+  @apply flex flex-col items-center justify-center h-full lg:rounded-br-lg bg-ash-50 py-10 px-24;
 }
 
 .recipe__footer-text {
-  @apply text-xs text-center sm:text-sm mb-6;
+  @apply text-xs lg:text-base text-brown-100 text-center sm:text-sm mb-6;
 }
 
 .reciper__publisher {
@@ -264,5 +330,5 @@ body {
 }
 
 .btn--directions {
-  @apply text-xs px-16 py-4;
+  @apply text-xs font-semibold px-16 py-4 lg:text-sm lg:px-20 lg:py-6;
 }

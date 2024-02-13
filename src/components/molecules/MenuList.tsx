@@ -9,9 +9,9 @@ export default function MenuList() {
     <>
       <div className={`${isMobileMenuOpen ? '' : 'nav__menu--hidden'} nav__menu`}>
       <ul className="menu">
-        <MenuItem text="Add recipes" imgPath="../src/assets/svgs/recipe.svg" />
+        <MenuItem text="Add Recipe" imgPath="../src/assets/svgs/recipe.svg" />
         <MenuItem text="Bookmarks" imgPath="../src/assets/svgs/bookmark.svg" />
-        <MenuItem text="Liked" imgPath="../src/assets/svgs/like.svg" />
+        <MenuItem text="Likes" imgPath="../src/assets/svgs/like.svg" />
       </ul>
       </div>
     {isSavedOpen &&
