@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useAppContext } from "../../contexts/AppContext";
 import { getRecipeById } from "../../services/api/apiRecipes";
 
@@ -14,7 +15,9 @@ interface RecipeListProps {
 }
 
 export default function RecipeList({ list, setSearchText }: RecipeListProps) {
-  const { setIsSearchOpen, setRecipeList, setRecipeDetails } = useAppContext();
+  const { setIsSearchOpen, setRecipeDetails } = useAppContext();
+  const [currentPage, setCurrentPage] = useState(1);
+  const recipesPerPage = 6;
 
   const getRecipe = (id: number) => {
     getRecipeById(id)
@@ -28,25 +31,37 @@ export default function RecipeList({ list, setSearchText }: RecipeListProps) {
   };
 
   const handleRecipeClick = (clickedRecipe: Recipe) => {
-    setRecipeList([]);
     setIsSearchOpen(false);
-   if(setSearchText) setSearchText(''); // If it's opening from the searchbar, clear the input
+    if (setSearchText) setSearchText('');
     getRecipe(Number(clickedRecipe.recipe_id));
   };
 
+
+  const indexOfLastRecipe = currentPage * recipesPerPage;
+  
+  const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
+
+  const currentRecipes = list.slice(indexOfFirstRecipe, indexOfLastRecipe);
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
   return (
-    <ul className='results'>
-      {list.map((recipe, index) => (
-        <li className='results__recipe' key={index} onClick={() => handleRecipeClick(recipe)}>
-          <a href="#">
-            <img className='results__recipe-pic' src={recipe.image_url} alt="recipe-pic" />
-            <div className='results__recipe-info'>
-              <p className='recipe-info__title'>{recipe.title}</p>
-              <p className='recipe-info__publisher'>{recipe.publisher}</p>
-            </div>
-          </a>
-        </li>
-      ))}
-    </ul>
+    <div>
+      <ul className='results'>
+        {currentRecipes.map((recipe, index) => (
+          <li className='results__recipe' key={index} onClick={() => handleRecipeClick(recipe)}>
+            <a href="#">
+              <div className='results__recipe-img'>
+                <img src={recipe.image_url} alt="recipe-img" />
+              </div>
+              <div className='results__recipe-info'>
+                <p className='recipe-info__title'>{recipe.title}</p>
+                <p className='recipe-info__publisher'>{recipe.publisher}</p>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

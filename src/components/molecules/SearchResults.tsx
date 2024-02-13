@@ -4,7 +4,10 @@ import NoResults from "../atoms/NoResults";
 import { useAppContext } from "../../contexts/AppContext";
 import { useBookmarkContext, ActionType } from "../../contexts/BookmarkContext";
 
-export default function SearchResults() {
+interface SearchResultsProps {
+  className: string;
+}
+export default function SearchResults({ className }: SearchResultsProps) {
     const { recipeList } = useAppContext(); 
     const { dispatch } = useBookmarkContext(); 
 
@@ -13,14 +16,17 @@ export default function SearchResults() {
     }, []);
 
     return (
-        <div className='search__results'>
-            {recipeList && recipeList.length > 0 ? (
-                <RecipeList list={recipeList} />
-            ) : (
-                <li className={recipeList?.length === 0 ? 'search__not-found' : 'hidden'}>
-                    <NoResults action="typing" highlight="pizza" />
-                </li>
-            )}
-        </div>
-    );
+      <>
+              <div className={className}>
+                  {recipeList && recipeList.length > 0 ? (
+                      <RecipeList list={recipeList} />
+                  ) : (
+                      <li className={recipeList?.length === 0 ? 'search__not-found' : 'hidden'}>
+                          <NoResults action="typing" highlight="pizza" />
+                      </li>
+                  )}
+              </div>
+      </>
+  );
+  
 }
