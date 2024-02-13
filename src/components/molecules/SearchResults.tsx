@@ -19,7 +19,7 @@ export default function SearchResults({ className }: SearchResultsProps) {
       <>
               <div className={className}>
                   {recipeList && recipeList.length > 0 ? (
-                      <RecipeList list={recipeList} />
+                      <RecipeList list={recipeList} paginate={true} />
                   ) : (
                       <li className={recipeList?.length === 0 ? 'search__not-found' : 'hidden'}>
                           <NoResults action="typing" highlight="pizza" />

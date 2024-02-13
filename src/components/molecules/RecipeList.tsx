@@ -8,9 +8,10 @@ import RecipeItem from '../atoms/RecipeItem';
 interface RecipeListProps {
   list: Recipe[];
   setSearchText?: (text: string) => void;
+  paginate: boolean; // Define the paginate prop
 }
 
-const RecipeList: React.FC<RecipeListProps> = ({ list, setSearchText }) => {
+export default function RecipeList({ list, setSearchText, paginate }: RecipeListProps) {
   const { setIsSearchOpen, setRecipeDetails } = useAppContext();
   const [currentPage, setCurrentPage] = useState(1);
   const recipesPerPage = 10;
@@ -45,15 +46,19 @@ const RecipeList: React.FC<RecipeListProps> = ({ list, setSearchText }) => {
             <RecipeItem key={index} recipe={recipe} handleRecipeClick={handleRecipeClick} />
           ))}
         </ul>
-        <Pagination
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          recipesPerPage={recipesPerPage}
-          totalRecipes={list.length}
-        />
-        <p className='copyright'>
+        {paginate && ( 
+          <>
+          <Pagination
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            recipesPerPage={recipesPerPage}
+            totalRecipes={list.length}
+          />
+          <p className='copyright'>
           @ Copyright Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel eius, reprehenderit nulla magni.
         </p>
+        </>
+        )}
       </div>
 
       {/* full list of recipes on smaller devices */}
@@ -67,5 +72,3 @@ const RecipeList: React.FC<RecipeListProps> = ({ list, setSearchText }) => {
     </div>
   );
 };
-
-export default RecipeList;

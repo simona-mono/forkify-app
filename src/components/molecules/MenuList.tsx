@@ -9,9 +9,11 @@ export default function MenuList() {
     <>
       <div className={`${isMobileMenuOpen ? '' : 'nav__menu--hidden'} nav__menu`}>
       <ul className="menu">
-        <MenuItem text="Add Recipe" imgPath="../src/assets/svgs/recipe.svg" />
-        <MenuItem text="Bookmarks" imgPath="../src/assets/svgs/bookmark.svg" />
-        <MenuItem text="Likes" imgPath="../src/assets/svgs/like.svg" />
+        <MenuItem text="add recipe" imgPath="../src/assets/svgs/recipe.svg" />
+        <MenuItem text="bookmarks" imgPath="../src/assets/svgs/bookmark.svg">
+          {<Bookmarks />}
+        </MenuItem>
+        <MenuItem text="likes" imgPath="../src/assets/svgs/like.svg" />
       </ul>
       </div>
     {isSavedOpen &&

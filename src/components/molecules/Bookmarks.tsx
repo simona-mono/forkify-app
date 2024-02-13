@@ -12,15 +12,26 @@ export default function Bookmarks() {
   
     return (
     <>
-     <div className="menu__bookmarks">
+    {/* on smaller devices */}
+     <ul className="menu__bookmarks--mobile">
     {savedRecipes && savedRecipes.length > 0 ? (
-      <RecipeList list={savedRecipes} />
+      <RecipeList list={savedRecipes} paginate={false} />
     ) : (
       <li className={savedRecipes?.length === 0 ? 'search__not-found' : 'hidden'}>
         <NoResults action="saving" highlight="recipes" />
       </li>
     )}
-  </div>
+  </ul>
+{/* on big devices */}
+  <ul className="menu__bookmarks--desktop">
+    {savedRecipes && savedRecipes.length > 0 ? (
+      <RecipeList list={savedRecipes} paginate={false} />
+    ) : (
+      <li className={savedRecipes?.length === 0 ? 'search__not-found' : 'hidden'}>
+        <NoResults action="saving" highlight="recipes" />
+      </li>
+    )}
+  </ul>
     </>
     );
   }

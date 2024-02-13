@@ -14,7 +14,7 @@ body {
 }
 
 .header__container {
-  @apply bg-ash-50 w-full lg:rounded-t-lg flex flex-wrap items-center justify-between mx-auto px-6 py-4 lg:p-0 lg:px-8;
+  @apply bg-ash-50 w-full lg:rounded-t-lg flex flex-wrap items-center justify-between mx-auto px-6 py-5 lg:py-0 lg:px-8;
 }
 
 .header__logo {
@@ -148,7 +148,7 @@ body {
 /* Navbar */
 
 .nav__actions {
-  @apply flex text-brown-50 lg:hidden;
+  @apply flex items-center text-brown-50 lg:hidden;
 }
 
 .btn {
@@ -160,7 +160,7 @@ body {
  }
 
  .btn--search {
-  @apply flex items-center h-full w-full py-3 lg:px-8 lg:py-3.5;
+  @apply flex items-center h-full w-full lg:px-8 lg:py-3.5;
  }
 
 .container--gradient-round {
@@ -179,12 +179,20 @@ body {
   @apply font-medium text-sm lg:font-bold lg:uppercase flex flex-col lg:flex-row lg:p-0 lg:mt-0 rounded-lg lg:mt-0 lg:border-0;
 }
 
-.menu__item {
+.menu__item--bookmarks, .menu__item--likes, .menu__item--add {
   @apply flex items-center border-b lg:h-24 lg:px-4 lg:border-none border-ash-100 transition duration-300 hover:bg-ash-100 cursor-pointer;
 }
 
-.menu__bookmarks {
-  @apply fixed top-0 pt-16 pb-48 left-0 -z-40 list-none h-full w-full bg-ash-50 overflow-scroll text-xs bg-ash-50 uppercase;
+.menu__bookmarks--mobile {
+  @apply lg:hidden fixed top-0 pt-20 pb-48 left-0 -z-50 list-none h-full w-full bg-white overflow-scroll text-xs uppercase;
+}
+
+.menu__bookmarks--desktop {
+  @apply hidden lg:block opacity-0 absolute top-24 right-0 w-1/3 pt-2 list-none bg-white overflow-scroll text-xs uppercase transition-all duration-500 delay-200 group-hover/bookmarks:opacity-100;
+}
+
+.list__bookmarks--desktop {
+  @apply hidden lg:block;
 }
 
 .item {

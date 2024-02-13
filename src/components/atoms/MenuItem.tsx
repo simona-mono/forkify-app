@@ -1,27 +1,32 @@
 import { useAppContext } from "../../contexts/AppContext";
+import { ReactNode } from "react";
 
 interface MenuItemProps {
     text: string;
     imgPath: string;
+    children?: ReactNode; 
 }
-export default function MenuItem({ text, imgPath }: MenuItemProps) {
+export default function MenuItem({ text, imgPath, children }: MenuItemProps) {
     const { toggleSavedRecipes, isSavedOpen } = useAppContext(); 
 
     const handleClick = () => {
-        if (text === 'Bookmarks') {
+        if (text === 'bookmarks') {
             toggleSavedRecipes();
             console.log(isSavedOpen)
         }
     };
 
+    const menuItemClass = text === 'bookmarks' ? 'menu__item--bookmarks group/bookmarks' : 'menu__item--' + text;
+
     return (
-        <>
-        <li onClick={handleClick} className="menu__item">
+        <li onClick={handleClick} className={menuItemClass}>
             <a href="#" className="item">
                 {text}
                 <img className="svg--sunset" src={imgPath} alt={text} />
             </a>
+            <div className={`list__${text}--desktop`}>
+            {children}
+            </div>
         </li>
-        </>
     );
 }
