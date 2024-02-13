@@ -13,7 +13,7 @@ interface RecipeListProps {
 const RecipeList: React.FC<RecipeListProps> = ({ list, setSearchText }) => {
   const { setIsSearchOpen, setRecipeDetails } = useAppContext();
   const [currentPage, setCurrentPage] = useState(1);
-  const recipesPerPage = 6;
+  const recipesPerPage = 10;
 
   const getRecipe = (id: number) => {
     getRecipeById(id)
@@ -37,9 +37,9 @@ const RecipeList: React.FC<RecipeListProps> = ({ list, setSearchText }) => {
   const currentRecipes = list.slice(indexOfFirstRecipe, indexOfLastRecipe);
 
   return (
-    <div>
+    <div className='results-container'>
       {/* paginated list of recipes on big devices */}
-      <div className='hidden lg:block'>
+      <div className='results-container-desktop'>
         <ul className='results'>
           {currentRecipes.map((recipe, index) => (
             <RecipeItem key={index} recipe={recipe} handleRecipeClick={handleRecipeClick} />
@@ -51,10 +51,13 @@ const RecipeList: React.FC<RecipeListProps> = ({ list, setSearchText }) => {
           recipesPerPage={recipesPerPage}
           totalRecipes={list.length}
         />
+        <p className='copyright'>
+          @ Copyright Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel eius, reprehenderit nulla magni.
+        </p>
       </div>
 
       {/* full list of recipes on smaller devices */}
-      <div className='lg:hidden'>
+      <div className='results-container-mobile'>
         <ul className='results'>
           {list.map((recipe, index) => (
             <RecipeItem key={index} recipe={recipe} handleRecipeClick={handleRecipeClick} />

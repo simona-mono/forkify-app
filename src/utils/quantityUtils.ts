@@ -8,7 +8,14 @@ export const adjustQuantity = (quantity: string, servings: number): string => {
 
     // if the amount is a fraction
     if (amount.includes('/')) {
-        const [numerator, denominator] = amount.split('/').map(Number);
+        const [numeratorStr, denominatorStr] = amount.split('/');
+        const numerator = parseInt(numeratorStr); // parse numerator into an integer
+        const denominator = parseInt(denominatorStr); // parse denominator into an integer
+
+        if (isNaN(numerator) || isNaN(denominator)) {
+            return ''; // return empty string if numerator or denominator is not a number
+        }
+
         const adjustedNumerator = numerator * servings;
         return new Fraction(adjustedNumerator, denominator).toFraction(true) + (words[1] ? ' ' + words[1] : ''); // include unit if present
     // if the amount is an integer
