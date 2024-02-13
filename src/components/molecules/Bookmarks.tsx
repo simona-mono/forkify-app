@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import RecipeList from "../atoms/RecipeList";
+import RecipeList from "./RecipeList";
 import NoResults from "../atoms/NoResults";
 import { ActionType, useBookmarkContext } from "../../contexts/BookmarkContext";
 

@@ -1,20 +1,16 @@
 import { useState } from 'react';
 import { useAppContext } from "../../contexts/AppContext";
 import { getRecipeById } from "../../services/api/apiRecipes";
-
-interface Recipe {
-  recipe_id: string;
-  image_url: string;
-  title: string;
-  publisher: string;
-}
+import Pagination from '../atoms/Pagination';
+import { Recipe } from '../../models/Recipe';
+import RecipeItem from '../atoms/RecipeItem';
 
 interface RecipeListProps {
   list: Recipe[];
   setSearchText?: (text: string) => void;
 }
 
-export default function RecipeList({ list, setSearchText }: RecipeListProps) {
+const RecipeList: React.FC<RecipeListProps> = ({ list, setSearchText }) => {
   const { setIsSearchOpen, setRecipeDetails } = useAppContext();
   const [currentPage, setCurrentPage] = useState(1);
   const recipesPerPage = 6;
@@ -36,32 +32,37 @@ export default function RecipeList({ list, setSearchText }: RecipeListProps) {
     getRecipe(Number(clickedRecipe.recipe_id));
   };
 
-
   const indexOfLastRecipe = currentPage * recipesPerPage;
-  
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
-
   const currentRecipes = list.slice(indexOfFirstRecipe, indexOfLastRecipe);
-
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
     <div>
-      <ul className='results'>
-        {currentRecipes.map((recipe, index) => (
-          <li className='results__recipe' key={index} onClick={() => handleRecipeClick(recipe)}>
-            <a href="#">
-              <div className='results__recipe-img'>
-                <img src={recipe.image_url} alt="recipe-img" />
-              </div>
-              <div className='results__recipe-info'>
-                <p className='recipe-info__title'>{recipe.title}</p>
-                <p className='recipe-info__publisher'>{recipe.publisher}</p>
-              </div>
-            </a>
-          </li>
-        ))}
-      </ul>
+      {/* paginated list of recipes on big devices */}
+      <div className='hidden lg:block'>
+        <ul className='results'>
+          {currentRecipes.map((recipe, index) => (
+            <RecipeItem key={index} recipe={recipe} handleRecipeClick={handleRecipeClick} />
+          ))}
+        </ul>
+        <Pagination
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          recipesPerPage={recipesPerPage}
+          totalRecipes={list.length}
+        />
+      </div>
+
+      {/* full list of recipes on smaller devices */}
+      <div className='lg:hidden'>
+        <ul className='results'>
+          {list.map((recipe, index) => (
+            <RecipeItem key={index} recipe={recipe} handleRecipeClick={handleRecipeClick} />
+          ))}
+        </ul>
+      </div>
     </div>
   );
-}
+};
+
+export default RecipeList;
