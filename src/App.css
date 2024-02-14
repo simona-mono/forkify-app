@@ -196,11 +196,11 @@ body {
 }
 
 .menu__bookmarks--desktop {
-  @apply hidden lg:block opacity-0 absolute top-24 right-0 w-1/3 py-4 list-none bg-white overflow-scroll text-xs uppercase transition-all duration-500 delay-200 group-hover/bookmarks:opacity-100;
+  @apply h-0 opacity-0 absolute top-24 right-0 w-1/3 py-4 list-none bg-white overflow-scroll text-xs uppercase transition-all duration-500 delay-200 group-hover/bookmarks:lg:h-auto group-hover/bookmarks:lg:opacity-100;
 }
 
 .list__bookmarks--desktop {
-  @apply hidden lg:block;
+  @apply hidden lg:block h-0 opacity-0 group-hover/bookmarks:lg:h-auto group-hover/bookmarks:lg:opacity-100;
 }
 
 .item {

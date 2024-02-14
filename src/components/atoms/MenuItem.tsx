@@ -16,7 +16,7 @@ export default function MenuItem({ text, imgPath, children }: MenuItemProps) {
         }
     };
 
-    const handleClickEnabled = window.innerWidth < 1024; // handle click only on small devices, on big devices open on hover
+    const handleClickEnabled = window.innerWidth < 1024;
     const menuItemClass = text === 'bookmarks' ? 'menu__item--bookmarks group/bookmarks' : 'menu__item--' + text;
 
     return (

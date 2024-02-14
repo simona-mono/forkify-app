@@ -12,7 +12,7 @@ interface RecipeListProps {
 }
 
 export default function RecipeList({ list, setSearchText, paginate }: RecipeListProps) {
-  const { setIsSearchOpen, setRecipeDetails } = useAppContext();
+  const { setIsSearchOpen, setRecipeDetails, setIsSavedOpen } = useAppContext();
   const [currentPage, setCurrentPage] = useState(1);
   const recipesPerPage = 10;
 
@@ -27,8 +27,11 @@ export default function RecipeList({ list, setSearchText, paginate }: RecipeList
       });
   };
 
+  const enable = window.innerWidth < 1024;  // enable action only on small devices to avoid bug when opening bookmarks on hover
+
   const handleRecipeClick = (clickedRecipe: Recipe) => {
     setIsSearchOpen(false);
+    enable ? setIsSavedOpen(false): '';
     if (setSearchText) setSearchText('');
     getRecipe(Number(clickedRecipe.recipe_id));
   };
