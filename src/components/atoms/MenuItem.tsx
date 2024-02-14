@@ -7,12 +7,11 @@ interface MenuItemProps {
     children?: ReactNode; 
 }
 export default function MenuItem({ text, imgPath, children }: MenuItemProps) {
-    const { toggleSavedRecipes, isSavedOpen } = useAppContext(); 
+    const { toggleSavedRecipes } = useAppContext(); 
 
     const handleClick = () => {
         if (text === 'bookmarks') {
             toggleSavedRecipes();
-            console.log(isSavedOpen)
         }
     };
 

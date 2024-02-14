@@ -63,6 +63,8 @@ body {
   @apply font-semibold;
 }
 
+/* Results list */
+
 .results {
   @apply flex flex-col;
 }
@@ -110,6 +112,8 @@ body {
 .recipe-info__publisher {
   @apply text-brown-100 text-xs mt-1 font-semibold;
 }
+
+/* Pagination & copyright */
 
 .pagination {
   @apply mt-2 px-8 flex justify-between;
@@ -160,7 +164,11 @@ body {
  }
 
  .btn--search {
-  @apply flex items-center h-full w-full lg:px-8 lg:py-3.5;
+  @apply flex items-center w-full h-full lg:px-8 lg:py-3.5;
+ }
+
+ .btn--search span {
+  @apply py-1.5 lg:py-0;
  }
 
 .container--gradient-round {
@@ -176,7 +184,7 @@ body {
 }
 
 .menu {
-  @apply font-medium text-sm lg:font-bold lg:uppercase flex flex-col lg:flex-row lg:p-0 lg:mt-0 rounded-lg lg:mt-0 lg:border-0;
+  @apply font-medium text-sm capitalize lg:font-bold lg:uppercase flex flex-col lg:flex-row lg:p-0 lg:mt-0 rounded-lg lg:mt-0 lg:border-0;
 }
 
 .menu__item--bookmarks, .menu__item--likes, .menu__item--add {
@@ -265,6 +273,8 @@ body {
   @apply box-decoration-clone p-2 lg:p-4 text-white bg-gradient-to-br from-birdy-50 to-sunset-50;
 }
 
+/* Card content */ 
+
 .recipe__ingredients {
   @apply flex flex-col px-14 py-6 lg:px-20 lg:py-14;
 }
@@ -324,6 +334,8 @@ body {
 .recipe__info--minutes span {
   @apply font-bold;
 }
+
+/* Card footer */ 
 
 .recipe__footer {
   @apply flex flex-col h-full items-center justify-center lg:rounded-br-lg bg-ash-50 py-10 px-24;

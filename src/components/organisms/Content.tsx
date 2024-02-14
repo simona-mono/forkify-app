@@ -8,7 +8,10 @@ export default function Content() {
     return (
         <>
         <section className={`main ${isMobileMenuOpen ? 'recipe--blur' : ''}`}>
+        {/* Search list results */}
         <SearchResults className="search__results--desktop" />
+
+        {/* Recipe card */}
         <RecipeCard />
         </section>
         </>
