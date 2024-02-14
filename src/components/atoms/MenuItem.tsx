@@ -7,21 +7,23 @@ interface MenuItemProps {
     children?: ReactNode; 
 }
 export default function MenuItem({ text, imgPath, children }: MenuItemProps) {
-    const { toggleSavedRecipes } = useAppContext(); 
-
-    const handleClick = () => {
-        // open or close mobile bookmarks
-        if (text === 'bookmarks') {
-            toggleSavedRecipes();
-        }
-    };
+    const { toggleSavedRecipes, toggleAddModal } = useAppContext(); 
 
     const handleClickEnabled = window.innerWidth < 1024;
     const menuItemClass = text === 'bookmarks' ? 'menu__item--bookmarks group/bookmarks' : 'menu__item--' + text;
 
+    const handleClick = () => {
+        if (text === 'bookmarks') {
+            handleClickEnabled ?  toggleSavedRecipes(): undefined;
+        } else if (text === 'add recipe') {
+            toggleAddModal();
+            console.log('clicked')
+        }
+    };
+
     return (
         <>
-        <li onClick={handleClickEnabled ? handleClick : undefined} className={menuItemClass}>
+        <li onClick={handleClick} className={menuItemClass}>
             <a href="#" className="item">
                 {text}
                 <img className="svg--sunset" src={imgPath} alt={text} />

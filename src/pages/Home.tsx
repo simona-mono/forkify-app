@@ -28,7 +28,7 @@ export default function Home() {
       <div className='home'>
         <Header />
         <Content />
-      {/*  <AddModal /> */}
+       <AddModal /> 
       </div>
     );
   }
