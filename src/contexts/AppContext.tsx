@@ -10,8 +10,11 @@ type ContextType = {
   setIsSearchOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isSavedOpen: boolean;
   setIsSavedOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  openAddModal: boolean;
+  setOpenAddModal: React.Dispatch<React.SetStateAction<boolean>>;
   toggleMobileSearch: () => void;
   toggleSavedRecipes: () => void;
+  toggleAddModal: () => void;
   recipeDetails: Recipe | null; 
   setRecipeDetails: React.Dispatch<React.SetStateAction<Recipe | null>>;
   recipeList: Recipe[] | null;
@@ -28,8 +31,11 @@ export const AppContext = createContext<ContextType>({
   setIsSearchOpen: () => {},
   isSavedOpen: false,
   setIsSavedOpen: () => {},
+  setOpenAddModal: () => {},
+  openAddModal: false,
   toggleMobileSearch: () => {},
   toggleSavedRecipes: () => {},
+  toggleAddModal: () => {},
   recipeDetails: null, 
   setRecipeDetails: () => {},
   recipeList: null,
@@ -46,6 +52,7 @@ export const ContextProvider = ({ children }: Props) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isSavedOpen, setIsSavedOpen] = useState(false);
+  const [openAddModal, setOpenAddModal] = useState(false);
   const [recipeDetails, setRecipeDetails] = useState<Recipe | null>(null); 
   const [recipeList, setRecipeList] = useState<Recipe[] | null>(null); 
   const [servings, setServings] = useState(1);
@@ -68,6 +75,13 @@ export const ContextProvider = ({ children }: Props) => {
     setIsSavedOpen(!isSavedOpen);
   };
 
+  const toggleAddModal = () => {
+    setIsMobileMenuOpen(false);
+    setIsSearchOpen(false);
+    setIsSavedOpen(false);
+    setOpenAddModal(!openAddModal)
+  };
+
   // Provide context value to children components
   const contextValue: ContextType = {
     isMobileMenuOpen,
@@ -77,8 +91,11 @@ export const ContextProvider = ({ children }: Props) => {
     setIsSearchOpen,
     isSavedOpen,
     setIsSavedOpen,
+    setOpenAddModal,
+    openAddModal,
     toggleMobileSearch,
     toggleSavedRecipes,
+    toggleAddModal,
     recipeDetails, 
     setRecipeDetails,
     recipeList,
