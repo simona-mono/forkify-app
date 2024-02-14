@@ -10,15 +10,18 @@ export default function MenuItem({ text, imgPath, children }: MenuItemProps) {
     const { toggleSavedRecipes } = useAppContext(); 
 
     const handleClick = () => {
+        // open or close mobile bookmarks
         if (text === 'bookmarks') {
             toggleSavedRecipes();
         }
     };
 
+    const handleClickEnabled = window.innerWidth < 1024; // handle click only on small devices, on big devices open on hover
     const menuItemClass = text === 'bookmarks' ? 'menu__item--bookmarks group/bookmarks' : 'menu__item--' + text;
 
     return (
-        <li onClick={handleClick} className={menuItemClass}>
+        <>
+        <li onClick={handleClickEnabled ? handleClick : undefined} className={menuItemClass}>
             <a href="#" className="item">
                 {text}
                 <img className="svg--sunset" src={imgPath} alt={text} />
@@ -27,5 +30,6 @@ export default function MenuItem({ text, imgPath, children }: MenuItemProps) {
             {children}
             </div>
         </li>
+        </>
     );
 }
