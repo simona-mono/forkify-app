@@ -12,7 +12,7 @@ export default function Logo() {
     return (
       <>
        <a onClick={handleClick} href="#" className="logo">
-         <img src="../src/assets/forkify-logo.png" alt="Forkify Logo" />
+         <img src="/assets/forkify-logo.png" alt="Forkify Logo" />
        </a>
       </>
     );
